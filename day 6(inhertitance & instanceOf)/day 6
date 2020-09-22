@@ -1,0 +1,295 @@
+package day6;
+
+public class Q44_fulltime extends Q44
+{
+	private double basic;
+	private double allowance;
+	public Q44_fulltime() {
+		super();
+		this.basic = 0;
+		this.allowance = 0;
+	}
+	void input(int id,double basic,double allowance)
+	{
+		input(id);
+		this.basic = basic;
+		this.allowance  = allowance;
+		setSalary(basic + allowance);
+	}
+	
+	
+}
+public class Q44_parttime  extends Q44_fulltime
+{
+	private int workingHour;
+	private int ratePerHour;
+	public Q44_parttime() {
+		super();
+		this.workingHour  =0;
+		this.ratePerHour = 0;
+		
+	}
+	void input(int id,int workingHour,int ratePerHour)
+	{
+		input(id);
+		this.workingHour = workingHour;
+		this.ratePerHour  = ratePerHour;
+		setSalary(workingHour * ratePerHour);
+	}
+}
+
+
+
+
+package day6;
+import java.util.*;
+public class Q44 {
+
+
+
+	private int id;
+	private double salary;
+		
+	Q44(){
+		
+	}
+	
+	void input(int id)
+	{
+		this.id = id;
+		salary = 0;
+	}
+	void print()
+	{
+		System.out.println("ID is "+id);
+		System.out.println("Salary is "+salary);
+	}
+	
+	protected double getSalary() {
+		return salary;
+	}
+	
+	protected void setSalary(double d) {
+		this.salary = d;
+	}
+
+}
+public class Q44_mainClass {
+
+	public static void main(String []a)
+	{
+		Q44_parttime aa  = new Q44_parttime(); 
+		aa.input(1,5,200);
+		aa.print();
+		
+		Q44_fulltime a1 = new Q44_fulltime();
+		a1.input(10,3000,5000);
+		a1.print();
+	}
+}
+============================================================
+package day6;
+
+public class Q45_collegaStudent extends Q45_student{
+
+	private int semester;
+
+	public Q45_collegaStudent() {
+		super();
+		
+	}
+
+	public Q45_collegaStudent(int roll, int percentage,int sem) {
+		super(roll, percentage);
+		this.semester = sem;
+	}
+
+	public int getSemester() {
+		return semester;
+	}
+
+	public void setSemester(int semester) {
+		this.semester = semester;
+	}
+	
+	public void show()
+	{
+		super.show();
+		System.out.println("Semester of student is "+semester);
+	}
+}
+package day6;
+
+public class Q45_schoolStudent extends Q45_student {
+
+	private int className;
+
+	public Q45_schoolStudent() {
+		super();
+	}
+
+	public Q45_schoolStudent(int roll, int percentage,int className) {
+		super(roll, percentage);
+		this.className = className;
+	}
+
+	public int getClassName() {
+		return className;
+	}
+
+	public void setClassName(int className) {
+		this.className = className;
+	}
+	
+	public void show()
+	{
+		super.show();
+		System.out.println("Class Name is "+className);
+	}
+}
+package day6;
+
+public class Q45_student {
+	private int roll;
+	private int percentage;
+	
+	public Q45_student() {
+		
+		this.roll = 0;
+		this.percentage = 0;
+	}
+	public Q45_student(int roll, int percentage) {
+	
+		this.roll = roll;
+		this.percentage = percentage;
+	}
+	public int getRoll() {
+		return roll;
+	}
+	public void setRoll(int roll) {
+		this.roll = roll;
+	}
+	public float getPercentage() {
+		return percentage;
+	}
+	public void setPercentage(int percentage) {
+		this.percentage = percentage;
+	}
+
+	public void show()
+	{
+		System.out.println("Roll number of student is "+roll);
+		System.out.println("Percentage of "+roll+" is "+percentage);
+	}
+}
+package day6;
+
+public class Q45_mainClass {
+
+	public static void main(String a[])
+	{
+		Q45_student arr[] = {new Q45_collegaStudent(134,88,4),
+		new Q45_collegaStudent(100,80,4),
+		new Q45_schoolStudent(58,33,10),
+		new Q45_schoolStudent(52,84,8),
+		
+		};
+		for(Q45_student ans : arr)
+		{
+			ans.show();
+		}
+		System.out.println();
+		System.out.println("to Search 134");
+		for(int i = 0 ; i < arr.length ; i ++)
+		{
+			if(arr[i].getRoll() == 134)
+			{
+				System.out.println("Roll no 134 Present");
+			}
+			else
+			{
+				continue;
+			}
+		}
+		System.out.println();
+		for(int i = 0 ; i < arr.length ; i ++)
+		{
+			if(arr[i].getPercentage() >= 75)
+			{
+				System.out.println(arr[i].getRoll() + " has A Grade");
+			}
+			else
+			{
+				continue;
+			}
+		}
+		
+	}
+}
+============================================================
+package day6;
+class Y
+{
+	private int val;
+
+	public int getVal() {
+		return val;
+	}
+
+	public void setVal(int val) {
+		this.val = val;
+	}
+
+	public Y() {
+		
+		this.val = val;
+	}
+}
+public class Q46_instanceOf {
+
+	public static void main(String arr[])
+	{
+		Y a1 = new Y();
+		System.out.println((a1 instanceof Y));
+	}
+}
+==========================================================
+package day6;
+
+public class Q47 {
+	  
+	    public String empName;
+	    public int empSalary;
+	    public String address;
+
+	    public Q47()
+	    {
+	        this("vipul");
+	    }
+	    public Q47(String name)
+	    {
+	    	this(name, 120035);
+	    }
+	    public Q47(String name, int sal)
+	    {
+	    	this(name, sal, "pune");
+	    }
+	    public Q47(String name, int sal, String addr)
+	    {
+	    	this.empName=name;
+	    	this.empSalary=sal;
+	    }
+
+	    void disp() {
+	    	System.out.println(empName);
+	    	System.out.println(empSalary);
+	    	System.out.println(address);
+	    }
+	    public static void main(String[] args)
+	    {
+	    	Q47 a1 = new Q47();
+	        a1.disp();
+	    }
+	}
+
+
