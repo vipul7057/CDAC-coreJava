@@ -73,7 +73,7 @@ package day7;
 
 public interface Q49_Taxable {
 
-	int salesTax = 7;
+	float salesTax = 0.07F;
 	float incomeTax  = 10.5F;
 	
 	void calcTax();
