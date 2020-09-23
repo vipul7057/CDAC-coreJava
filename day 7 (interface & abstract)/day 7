@@ -1,0 +1,162 @@
+package day7;
+
+public abstract class Q48_Processor {
+
+	int val;
+	
+	public void showData() {
+		System.out.println("Value is "+val);
+	}
+	abstract void process();
+	 
+}
+package day7;
+import java.util.*;
+public class Q48_Factorial extends Q48_Processor 
+{
+	@Override
+	void process()
+	{
+		System.out.println("Enter the number to calculate");
+		Scanner s = new Scanner(System.in);
+		int n = s.nextInt();
+		int sum  = 1;
+		for(int i = 1 ; i <= n ; i++)
+		{
+			sum = sum * i;
+		}
+		val = sum;
+	}
+}
+package day7;
+import java.util.*;
+public class Q48_Circle extends Q48_Processor {
+
+	double PI = 3.14;
+	void process()
+	{
+		System.out.println("Enter the radius");
+		Scanner s = new Scanner(System.in);
+		int r = s.nextInt();
+		double area = PI * (r * r);
+		val  = (int)area;
+	}
+}
+package day7;
+import java.util.*;
+public class Q48_mainClass {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("1 for Factorial & 2 for Area");
+		int c = s.nextInt();
+		if(c == 1)
+		{
+			Q48_Processor p = new Q48_Factorial();
+			p.process();
+			p.showData();
+				
+		}
+		if(c == 2)
+		{
+			Q48_Processor p1 = new Q48_Circle();
+			p1.process();
+			p1.showData();
+				
+		}
+		
+		
+	}
+}
+============================================================
+package day7;
+
+public interface Q49_Taxable {
+
+	int salesTax = 7;
+	float incomeTax  = 10.5F;
+	
+	void calcTax();
+}
+package day7;
+
+public class Q49_Product implements Q49_Taxable{
+
+	private int pid;
+	private int price;
+	private int quan;
+	
+	Q49_Product(int pid,int price,int quan)
+	{
+		this.pid = pid;
+		this.price = price;
+		this.quan = quan;
+	}
+	public void calcTax()
+	{
+		double Pta = salesTax * price;
+		System.out.println("Pid "+pid);
+		System.out.println("Price "+price);
+		System.out.println("Quantity is  "+quan);
+		
+		System.out.println("Total tax is "+Pta);
+	}
+	
+	
+}
+package day7;
+
+public class Q49_Employee implements Q49_Taxable {
+
+	private int empid;
+	private String name;
+	private double salary;
+	
+	Q49_Employee(int empid,String name,double salary)
+	{
+		this.empid = empid;
+		this.name = name;
+		this.salary = salary;
+	}
+	public void calcTax()
+	{
+		double ta = salary * incomeTax;
+		
+		System.out.println("EMP ID is "+empid);
+		System.out.println("Name "+name);
+		System.out.println("Salary is "+salary);
+		
+		System.out.println("Total income Tax "+ta);
+	}
+}
+package day7;
+import java.util.*;
+public class Q49_mainClass {
+
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Enter id of emp");
+		int n = s.nextInt();
+		System.out.println("enter Name ");
+		String name = s.next();
+		System.out.println("Enter salary");
+		double sal = s.nextDouble();
+		Q49_Taxable t = new Q49_Employee(n,name,sal);
+		t.calcTax();
+		
+		System.out.println("Enter id of product");
+		int n1 = s.nextInt();
+		System.out.println("enter Price ");
+		int price = s.nextInt();
+		System.out.println("Enter Quantity");
+		int sal1 = s.nextInt();
+		Q49_Taxable t1 = new Q49_Product(n1,price,sal1);
+		t1.calcTax();
+	}
+}
+
+
+
+
+
+
